@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Anniversary ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* 🌌 Galaxy Background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, #ff4d88, transparent 40%),
+                radial-gradient(circle at 80% 70%, #6600ff, transparent 40%),
+                black;
+    z-index: -1;
+}
+
+/* 💑 Names */
+.names {
+    font-size: 28px;
+    margin-top: 20px;
+    color: #e4ef03;
+}
+
+/* Instagram-style photo */
+.photo-frame {
+    width: 300px;
+    margin: 20px auto;
+    background: #111;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #ff4d88;
+}
+
+.photo-frame img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Counter */
+#counter {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #ff99cc;
+}
+
+/* Love message */
+#message {
+    margin: 20px;
+    font-size: 18px;
+    min-height: 60px;
+}
+
+/* Button */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4d88;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* 🌹 Rose Animation */
+.rose {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 💑 EDIT NAMES HERE -->
+<div class="names">
+    Jamai Babu ❤️ Didivai
+</div>
+
+<h1>Happy Anniversary 💖</h1>
+
+<!-- 📷 Replace with your photo -->
+<div class="photo-frame">
+    <img src="ok.png">
+</div>
+
+<div id="counter"></div>
+
+<button onclick="startLove()">Click For Surprise 💌</button>
+
+<div id="message"></div>
+
+<!-- 🎵 Add your romantic song file -->
+<audio id="music" src="pl.mp3" loop></audio>
+
+<script>
+/* 📅 EDIT YOUR ANNIVERSARY DATE HERE */
+const anniversaryDate = new Date("2024-02-14");
+
+/* ⏳ Live Counter */
+function updateCounter() {
+    const now = new Date();
+    const diff = now - anniversaryDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById("counter").innerHTML =
+        "Together for " + days + " beautiful days ❤️";
+}
+updateCounter();
+setInterval(updateCounter, 1000);
+
+/* 💌 Typewriter Message */
+function typeWriter(text, i = 0) {
+    if (i < text.length) {
+        document.getElementById("message").innerHTML += text.charAt(i);
+        setTimeout(() => typeWriter(text, i + 1), 50);
+    }
+}
+
+function startLove() {
+    document.getElementById("music").play();
+    const msg1 = "Happy Anniversary Jamai Babu and Didivai ❤️";
+    typeWriter(msg1);
+}
+
+/* 🌹 Floating Roses */
+function createRose() {
+    const rose = document.createElement("div");
+    rose.classList.add("rose");
+    rose.innerHTML = "🌹";
+    rose.style.left = Math.random() * 100 + "vw";
+    rose.style.fontSize = (Math.random() * 20 + 20) + "px";
+    document.body.appendChild(rose);
+    setTimeout(() => rose.remove(), 8000);
+}
+setInterval(createRose, 800);
+</script>
+
+</body>
+</html>
